@@ -15,7 +15,12 @@ from fastapi.responses import FileResponse
 app = FastAPI()
 
 
-
+@app.post("/connection/status")
+async def get_connection_status():
+   
+    
+    return {"status": "connected"}
+    
 
 
 # Define a route for handling POST requests with parameters in the request body
