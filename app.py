@@ -114,7 +114,7 @@ def get_report(session_id: str = Path(..., title="The session ID")):
     # Define a main function to start the server
 def main():
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=5000 , debug = True)
+    uvicorn.run(app, host="0.0.0.0", port=5000, reload=True)
 
 # Check if the script is being run directly
 if __name__ == "__main__":
