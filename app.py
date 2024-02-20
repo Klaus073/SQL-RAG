@@ -1,9 +1,10 @@
 from compare_llm import compare_llm_results , get_report , get_db_schema_as_string
-from sql_rag import Database
+from sql_rag import Database , ChatQuery
 from fastapi import FastAPI, Request , Path , HTTPException, File, UploadFile , Security, Depends 
 from fastapi.responses import FileResponse
 from typing import Optional, Dict
 import mysql.connector
+from langchain_community.llms import VLLMOpenAI
 import json
 # from auth import verify_token
 import os
@@ -16,11 +17,17 @@ app = FastAPI()
 
 
 @app.post("/connection/status")
-async def get_connection_status():
+async def get_connection_status(request: Request):
+    request_body = await request.json()
+    xx = request_body["input"]
    
-    
-    return {"status": "connected"}
-    
+    zz = ChatQuery(model=VLLMOpenAI(
+    openai_api_key="EMPTY",
+    openai_api_base="http://localhost:8000/v1",
+    model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
+    model_kwargs={"stop": ["."]},
+))
+    return {"status": ChatQuery.generate_sql_query(xx)}
 
 
 # Define a route for handling POST requests with parameters in the request body
