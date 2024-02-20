@@ -1,0 +1,103 @@
+question1: Count the total number of apartment bookings.
+query1: SELECT COUNT(*) AS total_bookings FROM Apartment_Bookings;
+
+question2: Show all distinct building descriptions.
+query2: SELECT DISTINCT building_description FROM Apartment_Buildings;
+
+question3: Show the minimum and maximum number of bathrooms of all the apartments.
+query3: SELECT MIN(bathroom_count) AS min_bathrooms, MAX(bathroom_count) AS max_bathrooms FROM Apartments;
+
+question4: What is the average number of bedrooms of all apartments?
+query4: SELECT AVG(bedroom_count) AS average_bedrooms FROM Apartments;
+
+question5: Return the apartment number and the number of rooms for each apartment.
+query5: SELECT apt_number, room_count FROM Apartments;
+
+question6: Return the first names and last names of all guests.
+query6: SELECT guest_first_name, guest_last_name FROM Guests;
+
+question7: What is the booking status code of the apartment with apartment number \?
+query7: SELECT booking_status_code FROM Apartment_Bookings WHERE apt_id = (SELECT apt_id FROM Apartments WHERE apt_number = '\');
+
+question8: Show the distinct apartment numbers of the apartments that have bookings with status code \?
+query8: SELECT DISTINCT apt_id FROM Apartment_Bookings WHERE booking_status_code = '\';
+
+question9: Show the guest first names, start dates, and end dates of all the apartment bookings.
+query9: SELECT Guests.guest_first_name, Apartment_Bookings.booking_start_date, Apartment_Bookings.booking_end_date FROM Apartment_Bookings INNER JOIN Guests ON Apartment_Bookings.guest_id = Guests.guest_id;
+
+question10: Show the total number of rooms of all apartments with facility code \?
+query10: SELECT SUM(room_count) AS total_rooms FROM Apartments WHERE apt_id IN (SELECT apt_id FROM Apartment_Facilities WHERE facility_code = '\');
+
+question11: Show the start dates and end dates of all the apartment bookings.
+query11: SELECT booking_start_date, booking_end_date FROM Apartment_Bookings;
+
+question12: Show all distinct building descriptions.
+query12: SELECT DISTINCT building_description FROM Apartment_Buildings;
+
+question13: Show the short names of the buildings managed by \.
+query13: SELECT building_short_name FROM Apartment_Buildings WHERE building_manager = '\';
+
+question14: What is the minimum and maximum number of bathrooms of all the apartments?
+query14: SELECT MIN(bathroom_count) AS min_bathrooms, MAX(bathroom_count) AS max_bathrooms FROM Apartments;
+
+question15: Show the apartment numbers, start dates, and end dates of all the apartment bookings.
+query15: SELECT apt_number, booking_start_date, booking_end_date FROM Apartment_Bookings INNER JOIN Apartments ON Apartment_Bookings.apt_id = Apartments.apt_id;
+
+question16: What is the average number of rooms of apartments with type code \?
+query16: SELECT AVG(room_count) AS average_rooms FROM Apartments WHERE apt_type_code = '\';
+
+question17: Return the apartment numbers of the apartments with type code \?
+query17: SELECT apt_number FROM Apartments WHERE apt_type_code = '\';
+
+question18: Show the facility codes of apartments with more than 4 bedrooms.
+query18: SELECT DISTINCT facility_code FROM Apartment_Facilities WHERE apt_id IN (SELECT apt_id FROM Apartments WHERE bedroom_count > 4);
+
+question19: Show the addresses of the buildings that have apartments with more than 2 bathrooms.
+query19: SELECT building_address FROM Apartment_Buildings WHERE building_id IN (SELECT building_id FROM Apartments WHERE bathroom_count > 2);
+
+question20: Show the apartment type codes and apartment numbers in the buildings managed by \.
+query20: SELECT apt_type_code, apt_number FROM Apartments WHERE building_id IN (SELECT building_id FROM Apartment_Buildings WHERE building_manager = '\');
+
+question21: Show the average number of bedrooms of all apartments grouped by building.
+query21: SELECT AVG(bedroom_count) AS average_bedrooms, building_id FROM Apartments GROUP BY building_id;
+
+question22: Return the apartment numbers and guest information for all apartments booked by female guests.
+query22: SELECT Apartments.apt_number, Guests.guest_first_name, Guests.guest_last_name FROM Apartment_Bookings INNER JOIN Apartments ON Apartment_Bookings.apt_id = Apartments.apt_id INNER JOIN Guests ON Apartment_Bookings.guest_id = Guests.guest_id WHERE Guests.gender_code = 'F';
+
+question23: Show the apartment type codes and the corresponding number of apartments sorted by the number of apartments in ascending order.
+query23: SELECT apt_type_code, COUNT(*) AS num_apartments FROM Apartments GROUP BY apt_type_code ORDER BY num_apartments ASC;
+
+question24: Show the top 3 apartment type codes sorted by the average number of rooms in descending order.
+query24: SELECT apt_type_code, AVG(room_count) AS avg_rooms FROM Apartments GROUP BY apt_type_code ORDER BY avg_rooms DESC LIMIT 3;
+
+question25: Show the apartment type code that has the largest number of total rooms, together with the number of bathrooms and number of bedrooms.
+query25: SELECT apt_type_code, SUM(room_count) AS total_rooms, MAX(bathroom_count) AS max_bathrooms, MAX(bedroom_count) AS max_bedrooms FROM Apartments GROUP BY apt_type_code ORDER BY total_rooms DESC LIMIT 1;
+
+question26: Show the most common apartment type code.
+query26: SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY COUNT(*) DESC LIMIT 1;
+
+question27: Show the most common apartment type code among apartments with more than 1 bathroom.
+query27: SELECT apt_type_code FROM Apartments WHERE apt_id IN (SELECT apt_id FROM Apartments WHERE bathroom_count > 1) GROUP BY apt_type_code ORDER BY COUNT(*) DESC LIMIT 1;
+
+question28: Show each apartment type code, and the maximum and minimum number of rooms for each type.
+query28: SELECT apt_type_code, MAX(room_count) AS max_rooms, MIN(room_count) AS min_rooms FROM Apartments GROUP BY apt_type_code;
+
+question29: Show each gender code and the corresponding count of guests sorted by the count in descending order.
+query29: SELECT gender_code, COUNT(*) AS num_guests FROM Guests GROUP BY gender_code ORDER BY num_guests DESC;
+
+question30: How many apartments do \ have any facility?
+query30: SELECT COUNT(DISTINCT apt_id) AS num_apartments_with_facility FROM Apartment_Facilities WHERE apt_id IN (SELECT apt_id FROM Apartments WHERE building_id = '\');
+
+question31: Show the apartment numbers of apartments with unit status availability of both 0 and 1.
+query31: SELECT apt_id FROM View_Unit_Status WHERE available_yn = 0 INTERSECT SELECT apt_id FROM View_Unit_Status WHERE available_yn = 1;
+
+question32: Show the booking start and end dates for the apartments with type code \.
+query32: SELECT booking_start_date, booking_end_date FROM Apartment_Bookings INNER JOIN Apartments ON Apartment_Bookings.apt_id = Apartments.apt_id WHERE Apartments.apt_type_code = '\';
+
+question33: Find the booking start date and end date for the apartments that have more than two bedrooms.
+query33: SELECT booking_start_date, booking_end_date FROM Apartment_Bookings INNER JOIN Apartments ON Apartment_Bookings.apt_id = Apartments.apt_id WHERE Apartments.bedroom_count > 2;
+
+question34: Tell me the booking status code for the apartment with number \.
+query34: SELECT booking_status_code FROM Apartment_Bookings WHERE apt_id = (SELECT apt_id FROM Apartments WHERE apt_number = '\');
+
+

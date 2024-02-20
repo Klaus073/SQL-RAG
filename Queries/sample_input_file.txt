@@ -1,0 +1,6 @@
+question1: Count the total number of apartment bookings.
+query1: SELECT COUNT(*) AS total_bookings FROM bookings;
+
+question2: Show all distinct building descriptions.
+query2: SELECT DISTINCT building_description FROM apartments;
+

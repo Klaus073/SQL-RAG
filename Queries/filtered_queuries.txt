@@ -1,0 +1,55 @@
+### Basic Queries (10):
+Count the total number of apartment bookings.
+Show all distinct building descriptions.
+Show the minimum and maximum number of bathrooms of all the apartments.
+What is the average number of bedrooms of all apartments?
+Return the apartment number and the number of rooms for each apartment.
+Return the first names and last names of all guests.
+What is the booking status code of the apartment with apartment number \?
+Show the distinct apartment numbers of the apartments that have bookings with status code \?
+Show the guest first names, start dates, and end dates of all the apartment bookings.
+Show the total number of rooms of all apartments with facility code \?
+
+### Intermediate Queries (15):
+Show the start dates and end dates of all the apartment bookings.
+Show all distinct building descriptions.
+Show the short names of the buildings managed by \.
+What is the minimum and maximum number of bathrooms of all the apartments?
+Show the apartment numbers, start dates, and end dates of all the apartment bookings.
+What is the average number of rooms of apartments with type code \?
+Return the apartment numbers of the apartments with type code \?
+Show the facility codes of apartments with more than 4 bedrooms.
+Show the addresses of the buildings that have apartments with more than 2 bathrooms.
+Show the apartment type codes and apartment numbers in the buildings managed by \.
+
+### Advanced Queries (25):
+Show the average number of bedrooms of all apartments grouped by building.
+Return the apartment numbers and guest information for all apartments booked by female guests.
+Show the apartment type codes and the corresponding number of apartments sorted by the number of apartments in ascending order.
+Show the top 3 apartment type codes sorted by the average number of rooms in descending order.
+Show the apartment type code that has the largest number of total rooms, together with the number of bathrooms and number of bedrooms.
+Show the most common apartment type code among apartments with more than one bathroom.
+Show each apartment type code, and the maximum and minimum number of rooms for each type.
+Show each gender code and the corresponding count of guests sorted by the count in descending order.
+Find the number of apartments that have no facility.
+Show the apartment numbers of apartments with bookings that have status code both \.
+Show the booking status code and the corresponding number of bookings.
+Return all the apartment numbers sorted by the room count in ascending order.
+Return the apartment number with the largest number of bedrooms.
+Show the apartment type codes and the corresponding number of apartments sorted by the number of apartments in ascending order.
+Show the top 3 apartment type codes sorted by the average number of rooms in descending order.
+Show the apartment type code that has the largest number of total rooms, together with the number of bathrooms and number of bedrooms.
+Show the most common apartment type code.
+Show the most common apartment type code among apartments with more than 1 bathroom.
+Show each apartment type code, and the maximum and minimum number of rooms for each type.
+Show each gender code and the corresponding count of guests sorted by the count in descending order.
+How many apartments do \ have any facility?
+Show the apartment numbers of apartments with unit status availability of both 0 and 1.
+Show the booking start and end dates for the apartments with type code \.
+Find the booking start date and end date for the apartments that have more than two bedrooms.
+Tell me the booking status code for the apartment with number \.
+Which guests have apartment bookings with status code \?
+What are the facility codes of the apartments with more than four bedrooms?
+Find the total number of rooms in the apartments that have facility code \.
+How many rooms in total are there in the apartments in the building with short name \?
+Which apartments have bookings with status code \?
