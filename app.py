@@ -91,12 +91,13 @@ CREATE TABLE View_Unit_Status (
 
 """
     zz = ChatQuery(model=VLLMOpenAI(
-    openai_api_key="EMPTY",
-    openai_api_base="http://localhost:8000/v1",
-    model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
-    model_kwargs={"stop": ["."]},
-))
-    return {"status": zz.generate_sql_query(xx,db_schema)}
+        openai_api_key="EMPTY",
+        openai_api_base="http://localhost:8000/v1",
+        model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
+        model_kwargs={"stop": ["."]},
+    ))
+    
+    return {"status": zz.generate_sql_query(xx, db_schema)
 
 
 # Define a route for handling POST requests with parameters in the request body
