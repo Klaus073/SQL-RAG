@@ -16,6 +16,12 @@ from fastapi.responses import FileResponse
 app = FastAPI()
 
 
+
+@app.post("/connection/status")
+async def get_connection_status(request: Request):
+    request_body = await request.json()
+    xx = request_body["input"]
+    
 db_schema = """
 CREATE TABLE Apartment_Buildings (
     building_id INTEGER NOT NULL,
@@ -84,19 +90,13 @@ CREATE TABLE View_Unit_Status (
 
 
 """
-
-@app.post("/connection/status")
-async def get_connection_status(request: Request):
-    request_body = await request.json()
-    xx = request_body["input"]
-   
     zz = ChatQuery(model=VLLMOpenAI(
     openai_api_key="EMPTY",
     openai_api_base="http://localhost:8000/v1",
     model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
     model_kwargs={"stop": ["."]},
 ))
-    return {"status": ChatQuery.generate_sql_query(xx,db_schema)}
+    return {"status": zz.generate_sql_query(xx,db_schema)}
 
 
 # Define a route for handling POST requests with parameters in the request body
