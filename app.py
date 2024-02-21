@@ -94,7 +94,8 @@ async def get_connection_status(request: Request):
 
 
             """
-    return {"status": zz.generate_sql_query(input,schema)}
+    result = zz.generate_sql_query(input,schema)
+    return {"status":result }
 
 
 # Define a route for handling POST requests with parameters in the request body
