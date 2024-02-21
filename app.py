@@ -24,7 +24,7 @@ async def get_connection_status(request: Request):
     input = request_body.get("input")
     zz = ChatQuery(model=VLLMOpenAI(
                     openai_api_key="EMPTY",
-                    openai_api_base="http://localhost:8000/v1",
+                    openai_api_base="http://localhost:8000/v1/completions",
                     model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
                     model_kwargs={"stop": ["."]},
                     ))
