@@ -14,6 +14,9 @@ from fastapi.responses import FileResponse
 # Create an instance of the FastAPI class
 app = FastAPI()
 
+@app.post("/status")
+async def get_connection_status(request: Request):
+    return {"status":"connected"}
 
 @app.post("/connection/status")
 async def get_connection_status(request: Request):
